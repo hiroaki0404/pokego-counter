@@ -49,6 +49,7 @@ post '/count' do
               text: msg
           }
           client.reply_message(event['replyToken'], message)
+          File.delete(tf.path)
         end
       end
     end
