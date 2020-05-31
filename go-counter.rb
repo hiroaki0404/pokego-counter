@@ -14,6 +14,7 @@ end
 def decode_image(path)
     image = RTesseract.new(path, tessdata_dir: ENV["TESSDATA_DIR"])
     pp image
+    image.to_s
 end
 
 get '/' do
