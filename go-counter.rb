@@ -1,5 +1,6 @@
 require 'sinatra'
 require 'line/bot'
+require 'rtesseract'
 
 def client
     @client ||= Line::Bot::Client.new { |config|
@@ -10,7 +11,8 @@ def client
 end
 
 def decode_image(path)
-    return "not implimented"
+    image = RTesseract.new(path)
+    image.to_s
 end
 
 get '/' do
