@@ -11,7 +11,7 @@ def client
 end
 
 def decode_image(path)
-    image = RTesseract.new(path)
+    image = RTesseract.new(path, tessdata_dir: ENV["TESSDATA_PREFIX"])
     image.to_s
 end
 
