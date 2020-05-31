@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'line/bot'
 require 'rtesseract'
+require 'pp'
 
 def client
     @client ||= Line::Bot::Client.new { |config|
@@ -12,7 +13,7 @@ end
 
 def decode_image(path)
     image = RTesseract.new(path, tessdata_dir: ENV["TESSDATA_DIR"])
-    image.to_s
+    pp image
 end
 
 get '/' do
