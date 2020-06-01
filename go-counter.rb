@@ -21,7 +21,7 @@ def decode_image(path)
     current_xp.gsub!(',','')
     max_xp.gsub!(',','')
 
-    "#{current_xp.to_f * 100 / max_xp.to_f}% done"
+    "#{(current_xp.to_f * 100 / max_xp.to_f).round(2)}% done"
 end
 
 get '/' do
