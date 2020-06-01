@@ -14,7 +14,14 @@ end
 def decode_image(path)
     image = RTesseract.new(path, tessdata_dir: ENV["TESSDATA_DIR"], oem: true)
     pp image
-    image.to_s
+    image.to_s.force_encoding('utf-8') =~ /(\d{1,3}[,\d{3}]*)\s*\/\s*(\d{1,3}[,\d{3}]*)/m
+    current_xp = $1
+    max_xp = $2
+
+    current_xp.gsub!(',','')
+    max_xp.gsub!(',','')
+
+    "#{current_xp.to_f * 100 / max_xp.to_f}% done"
 end
 
 get '/' do
